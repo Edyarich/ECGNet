@@ -27,7 +27,7 @@ import pyriemann
 from htnet_model import htnet
 from model_utils import load_data, folds_choose_subjects, subject_data_inds, roi_proj_rf, str2bool, get_custom_motor_rois, proj_mats_good_rois
 
-def cnn_model(X_train, Y_train,X_validate, Y_validate,X_test,Y_test,chckpt_path,modeltype,
+def cnn_model(X_train,Y_train,X_validate,Y_validate,X_test,Y_test,chckpt_path,modeltype,
               proj_mat_out=None,sbj_order_train=None,sbj_order_validate=None,
               sbj_order_test=None,nROIs=100,nb_classes = 2,dropoutRate = 0.25,
               kernLength = 32, F1 = 8, D = 2, F2 = 16, dropoutType = 'Dropout',
@@ -342,7 +342,7 @@ def run_nn_models(sp,n_folds,combined_sbjs,lp, roi_proj_loadpath,
             X[np.isnan(X)] = 0 # set all NaN's to 0
             # Identify the number of unique labels (or classes) present
             nb_classes = len(np.unique(y))
-            
+
             # Randomize event order (random seed facilitates consistency)
             order_inds = np.arange(len(y))
             np.random.shuffle(order_inds)

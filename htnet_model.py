@@ -18,7 +18,7 @@ import tensorflow as tf
 # Load utility functions for custom HTNet layers
 from model_utils import apply_hilbert_tf, proj_to_roi
 
-def htnet(nb_classes, Chans = 64, Samples = 128, 
+def htnet(nb_classes, Chans = 64, Samples = 128,
           dropoutRate = 0.5, kernLength = 64, F1 = 8, 
           D = 2, F2 = 16, norm_rate = 0.25, dropoutType = 'Dropout',
           ROIs = 100,useHilbert=False,projectROIs=False,kernLength_sep = 16,
@@ -95,7 +95,7 @@ def htnet(nb_classes, Chans = 64, Samples = 128,
     
     # Depthwise kernel acts over all electrodes or brain regions
     if projectROIs:
-        block1       = DepthwiseConv2D((ROIs, 1), use_bias = False, 
+        block1       = DepthwiseConv2D((ROIs, 1), use_bias = False,
                                    depth_multiplier = D,
                                    depthwise_constraint = max_norm(1.))(block1)
     else:

@@ -162,15 +162,14 @@ def unwrap(p, discont=np.pi, axis=-1):
     ph_cumsum = tf.cumsum(ph_correct, axis=axis)
 
     shape = p.get_shape().as_list()
-#     if shape[0] is None:
-#         shape[0] = 1 # take care of initialization issue (SP 5/6/20)
     shape[axis] = 1
     zeros_mat = tf.zeros_like(p, dtype=p.dtype)
+
     if shape[0] is None:
         ph_cumsum = tf.concat([zeros_mat[:,:shape[1],:shape[2],:shape[3]], ph_cumsum], axis=axis)
     else:
         ph_cumsum = tf.concat([zeros_mat[:shape[0],:shape[1],:shape[2],:shape[3]], ph_cumsum], axis=axis)
-#     ph_cumsum = tf.concat([tf.zeros(shape, dtype=p.dtype), ph_cumsum], axis=axis)
+
     unwrapped = p + ph_cumsum
     return unwrapped
 
@@ -653,7 +652,7 @@ def roi_proj_pow(X_in,sbj_order,nROIs,proj_mat_out,ecog=True):
     X_in_proj = np.zeros(X_in_sh)
     for s in range(X_in.shape[0]):
         sh_orig = X_in_proj.shape
-        X_in_ep = X_in[s,...].reshape(X_in.shape[1],-1)
+        X_in_ep = X_in[s,...]   .reshape(X_in.shape[1],-1)
         if ecog:
             X_in_ep_proj = proj_mat_out[sbj_order[s],...] @ X_in_ep
         else:

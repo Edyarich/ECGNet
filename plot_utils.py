@@ -234,48 +234,6 @@ def plot_model_accs(root_path, dataset, nb_classes=2, compare_models=True,
         ax[0,ii].tick_params(axis='x', pad=0)
         ax[0,ii].set_title(cond_lets[ii],fontsize=10,x=0,fontweight='bold',pad=title_pads[ii],color='dimgray')
         ax[0,ii].text((len(lp)/2)-.5,title_y[ii],conds[ii],fontsize=10,ha='center',fontweight='bold')
-#         # Add stats (manually created)
-#         star_fontsize = 18
-#         if (ii==0) & compare_models:
-#             y_start,h,w_x = 1.02,.04,1
-#             ax[0,ii].plot([0, 0, 2, 2, 2-w_x, 2+w_x],
-#                           [y_start, y_start+h, y_start+h, y_start, y_start, y_start],
-#                           lw=1.5, c='k')
-#             if use_asterisks:
-#                 ax[0,ii].text(1,1.04,'*',fontsize=star_fontsize,fontweight='bold',ha='center')
-#             else:
-#                 ax[0,ii].text(1,1.09,r'$p<0.05$',fontsize=7,fontweight='normal',ha='center')
-#         elif (ii==1) & compare_models:
-#             y_start,h1,h2,w_x = .95,.06,.06,1
-#             ax[0,ii].plot([0, 0, 2, 2, 2-w_x, 2+w_x],
-#                           [y_start, y_start+h1, y_start+h1, y_start-h2, y_start-h2, y_start-h2],
-#                           lw=1.5, c='k')
-#             if use_asterisks:
-#                 ax[0,ii].text(1,.99,'*',fontsize=star_fontsize,fontweight='bold',ha='center')
-#             else:
-#                 ax[0,ii].text(1,1.05,r'$p<0.05$',fontsize=7,fontweight='normal',ha='center')
-#         elif (ii==2) & compare_models:
-#             y_start,h1,h2,w_x = .8,.06,.1,1
-#             ax[0,ii].plot([0, 0, 2, 2, 2-w_x, 2+w_x],
-#                           [y_start, y_start+h1, y_start+h1, y_start-h2, y_start-h2, y_start-h2],
-#                           lw=1.5, c='k')
-#             if use_asterisks:
-#                 ax[0,ii].text(1,.85,'***',fontsize=star_fontsize,fontweight='bold',ha='center')
-#             else:
-#                 ax[0,ii].text(1,.9,r'$p<0.001$',fontsize=7,fontweight='normal',ha='center')
-#         if (ii==0) & (not compare_models):
-#             ax[0,ii].text(2,.82,'**',fontsize=star_fontsize,fontweight='bold',ha='center')
-#             ax[0,ii].text(3,.97,'**',fontsize=star_fontsize,fontweight='bold',ha='center')
-#         elif (ii==1) & (not compare_models):
-#             y_start,h = .92,.06
-#             ax[0,ii].plot([2, 2, 4, 4],
-#                           [y_start, y_start+h, y_start+h, y_start],
-#                           lw=1.5, c='k')
-#             ax[0,ii].text(3,.97,'**',fontsize=star_fontsize,fontweight='bold',ha='center')
-#         elif (ii==2) & (not compare_models):
-#             ax[0,ii].text(1,.55,'**',fontsize=star_fontsize,fontweight='bold',ha='center')
-#             ax[0,ii].text(2,.8,'**',fontsize=star_fontsize,fontweight='bold',ha='center')
-#             ax[0,ii].text(3,.65,'**',fontsize=star_fontsize,fontweight='bold',ha='center')
 
         ## Subject-by-subject lineplots (bottom row)
         col_labels_plt = df_sbj['Models'].unique().tolist().copy()
